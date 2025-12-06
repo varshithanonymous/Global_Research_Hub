@@ -1,0 +1,50 @@
+"use client";
+
+import { useRef } from "react";
+
+export default function HomePage() {
+  const aboutRef = useRef(null);
+  const servicesRef = useRef(null);
+  const contactRef = useRef(null);
+
+  const scrollToSection = (ref) => window.scrollTo({ top: ref.current.offsetTop, behavior: "smooth" });
+
+  return (
+    <>
+      <nav className="navbar">
+        <a onClick={() => scrollToSection(aboutRef)}>About</a>
+        <a onClick={() => scrollToSection(servicesRef)}>Services</a>
+        <a onClick={() => scrollToSection(contactRef)}>Contact</a>
+      </nav>
+
+      <section className="hero">
+        <h1>Welcome to Global Research Hub</h1>
+        <p>Your gateway to cutting-edge research and global collaboration.</p>
+        <button className="cta">Get Started</button>
+      </section>
+
+      <section className="section" ref={aboutRef}>
+        <h2>About Us</h2>
+        <p>
+          Global Research Hub connects researchers worldwide, providing insights and resources to further their knowledge
+          and careers.
+        </p>
+      </section>
+
+      <section className="section" ref={servicesRef}>
+        <h2>Our Services</h2>
+        <p>Explore research conferences, publish your work, and join a thriving academic community.</p>
+      </section>
+
+      <section className="section" ref={contactRef}>
+        <h2>Contact Us</h2>
+        <form className="contact-form">
+          <input type="text" placeholder="Name" required />
+          <input type="email" placeholder="Email" required />
+          <textarea placeholder="Message" rows="5" required></textarea>
+          <button type="submit">Submit</button>
+        </form>
+      </section>
+    </>
+  );
+}
